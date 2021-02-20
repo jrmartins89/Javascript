@@ -32,4 +32,16 @@ class Pilha{
     this.novo.setProximo(this.topo);
     this.topo = this.novo;
   }
+
+  desempilha(){
+    this.temporario = this.topo.getValor();
+    this.topo = this.topo.getProximo();
+    return this.temporario;
+  }
+
+  pilhaVazia(){
+    if(this.topo==null){
+      console.log(`A pilha está vazia!`);
+    }
+  }
 }
