@@ -14,7 +14,7 @@ class Pilha{
     this.topo = this.novo;
     this.contador=this.contador+1;
   }else{
-    console.log('Pilha cheia!');
+    return false;
   }
 }
 

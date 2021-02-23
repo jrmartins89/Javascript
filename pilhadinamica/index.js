@@ -1,20 +1,25 @@
 const Pilha = require('./pilha')
 
-pilha = new Pilha(5);
+pilha = new Pilha(10);
 
-pilha.empilha(351);
-pilha.empilha(24);
-pilha.empilha(32);
-pilha.empilha(489);
-pilha.empilha(1000)
+for(i=0;i<10;i++){
+  var elemento = Math.round(Math.random()*1000);
+  console.log(`Adicionando ${elemento} na posição ${i+1}`);
+  pilha.empilha(elemento);
+}
 
-console.log(`Pilha de tamanho ${pilha.tamanho}:`);
+console.log(`Pilha de tamanho ${pilha.tamanho}. Topo:${pilha.topo.valor}. Valores:`);
 pilha.mostraPilha();
 console.log('\n');
-console.log('Tendando adicionar um elemento à pilha cheia:');
-pilha.empilha(58);
+var novoElemento = Math.round(Math.random()*1000);
+console.log(`Tentando adicionar ${novoElemento} à pilha:`);
+if(pilha.empilha(novoElemento)==false){
+  console.log(`Pilha cheia!`);
+}
 
-console.log('Desempilha 02 elementos.\nNova Pilha:\n');
-pilha.desempilha();
-pilha.desempilha();
+console.log(`Desempilha 02 elementos.`);
+console.log(`Elemento ${pilha.desempilha()} removido`);
+console.log(`Elemento ${pilha.desempilha()} removido`);
+
+console.log(`Pilha de tamanho ${pilha.tamanho}. Topo:${pilha.topo.valor}. Valores:`);
 pilha.mostraPilha();
