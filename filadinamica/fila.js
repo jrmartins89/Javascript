@@ -8,18 +8,44 @@ class Fila{
     this.contador=0;
   } 
 
+  getContador(){
+    return this.contador;
+  }
+  getTamanho(){
+    return this.tamanho;
+  }
+
+  getInicio(){
+    return this.inicio;
+  }
+
+  setInicio(inicio){
+    this.inicio=inicio;
+  }
+
+  setFim(fim){
+    this.fim=fim;
+  }
+
+  setContador(contador){
+    this.contador=contador;
+  }
+
+  
+
+
   enfileira(elemento){
     this.novo = new Elemento(elemento);
-    if(this.contador<this.tamanho){
-      if(!this.inicio){
-        this.inicio = this.novo;
-        this.fim =this.novo;
-        this.contador=this.contador+1;
+    if(this.getContador()<this.getTamanho()){
+      if(!this.getInicio()){
+        this.setInicio(this.novo);
+        this.setFim(this.novo);
+        this.setContador(this.getContador()+1);
       }
       else{
         this.fim.setProximo(this.novo);
-        this.fim = this.novo;
-        this.contador=this.contador+1;
+        this.setFim(this.novo);
+        this.setContador(this.getContador()+1);
       }
     }
     else{
@@ -28,13 +54,13 @@ class Fila{
   }
   
   desenfileira(){
-    this.elementoRemovido = this.inicio;
-    this.inicio = this.inicio.getProximo(); 
-    return this.elementoRemovido.valor;
+    this.elementoRemovido = this.getInicio();
+    this.setInicio(this.inicio.getProximo()); 
+    return this.elementoRemovido.getValor();
   }
 
   mostraFila(){
-    var atual = this.inicio;
+    var atual = this.getInicio();
     while(atual.getProximo()!==null){
       console.log(atual.getValor());
       atual = atual.getProximo();
