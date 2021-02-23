@@ -7,12 +7,36 @@ class Pilha{
     this.contador = 0;
   }
 
+  getTamanho(){
+    return this.tamanho;
+  }
+
+  getTopo(){
+    return this.topo;
+  }
+
+  getContador(){
+    return this.contador;
+  }
+
+  setTamanho(tamanho){
+    this.tamanho = tamanho;
+  }
+
+  setTopo(topo){
+    this.topo=topo;
+  }
+
+  setContador(contador){
+    this.contador = contador;
+  }
+
   empilha(elemento){
-    if(this.contador<this.tamanho){
+    if(this.getContador()<this.getTamanho()){
     this.novo = new Elemento(elemento);
-    this.novo.setProximo(this.topo);
-    this.topo = this.novo;
-    this.contador=this.contador+1;
+    this.novo.setProximo(this.getTopo());
+    this.setTopo(this.novo);
+    this.setContador(this.getContador()+1);
   }else{
     return false;
   }
@@ -20,12 +44,12 @@ class Pilha{
 
   desempilha(){
     this.temporario = this.topo.getValor();
-    this.topo = this.topo.getProximo();
+    this.setTopo(this.topo.getProximo());
     return this.temporario;
   }
 
   mostraPilha(){
-    var atual = this.topo;
+    var atual = this.getTopo();
       while(atual.getProximo() !== null){
         console.log(atual.getValor());
         atual = atual.getProximo();
